@@ -108,6 +108,19 @@ source $ZSH/oh-my-zsh.sh
 work() {
     selected=$(find ~/Work -mindepth 1 -maxdepth 1 -type d | fzf --preview 'ls {}' --query "$1" --print0 --select-1)
     cd $selected
+    code .
+}
+
+frt() {
+    selected=$(find ~/Work -mindepth 1 -maxdepth 1 -type d | fzf --preview 'ls {}' --query "$1" --print0 --select-1)
+    cd $selected
+    cd front
+}
+
+bck(){
+     selected=$(find ~/Work -mindepth 1 -maxdepth 1 -type d | fzf --preview 'ls {}' --query "$1" --print0 --select-1)
+    cd $selected
+    cd back
 }
 
 alias c=code
@@ -115,3 +128,7 @@ alias c=code
 so(){
     source ~/.zshrc
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
